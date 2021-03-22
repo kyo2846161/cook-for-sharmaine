@@ -129,105 +129,105 @@ const IndexPage = () =>{
   );
 }
 
-class IndexPage2 extends React.Component {
-  constructor(){
-    super();
+// class IndexPage2 extends React.Component {
+//   constructor(){
+//     super();
     
-    const date = new Date();
-    const hours = date.getHours();
-    const check_current_moment = hours <= 6 ?  "凌晨" : hours >=7 && hours <12? "早上" : hours === 12? "中午" : hours >=13 && hours < 19 ? "下午" : "晚上";
-    let greeting_txt ="", greeting_img = ""
-    switch(check_current_moment){
-        case "凌晨":
-          greeting_txt = "凌晨了\n\n不打擾您享受個人時光";
-          greeting_img = "meal_aftermeal";
-            break;
-        case "早上":
-          greeting_txt = "早安\n今天也會是元氣滿滿的一天！";
-          greeting_img = "meal_breakfast";
-            break;
-        case "中午":
-          greeting_txt = "午安\n開個冷氣唄";
-          greeting_img = "meal_lunch";
-            break;
-        case "下午":
-          greeting_txt = "下午好\n來杯咖啡？";
-          greeting_img = "meal_teatime";
-            break;
-        case "晚上":
-          greeting_txt = "晚安親愛的\n\n今天辛苦了，\n好好休息唄";
-          greeting_img = "meal_dinner";
-            break;
-        default:
-          greeting_txt = "你好，\n交個朋友吧";
-          greeting_img = "meal_teatime";
-          break;
-    }
+//     const date = new Date();
+//     const hours = date.getHours();
+//     const check_current_moment = hours <= 6 ?  "凌晨" : hours >=7 && hours <12? "早上" : hours === 12? "中午" : hours >=13 && hours < 19 ? "下午" : "晚上";
+//     let greeting_txt ="", greeting_img = ""
+//     switch(check_current_moment){
+//         case "凌晨":
+//           greeting_txt = "凌晨了\n\n不打擾您享受個人時光";
+//           greeting_img = "meal_aftermeal";
+//             break;
+//         case "早上":
+//           greeting_txt = "早安\n今天也會是元氣滿滿的一天！";
+//           greeting_img = "meal_breakfast";
+//             break;
+//         case "中午":
+//           greeting_txt = "午安\n開個冷氣唄";
+//           greeting_img = "meal_lunch";
+//             break;
+//         case "下午":
+//           greeting_txt = "下午好\n來杯咖啡？";
+//           greeting_img = "meal_teatime";
+//             break;
+//         case "晚上":
+//           greeting_txt = "晚安親愛的\n\n今天辛苦了，\n好好休息唄";
+//           greeting_img = "meal_dinner";
+//             break;
+//         default:
+//           greeting_txt = "你好，\n交個朋友吧";
+//           greeting_img = "meal_teatime";
+//           break;
+//     }
 
-    this.state = {
-      current_moment: check_current_moment,
-      greeting_txt : greeting_txt,
-      greeting_img : greeting_img,
-      currentPage: "home",
-      nextPage: "",
-      homePage: false,
-      ingredientsPage: false,
-      recipePage: false,
-    };
-    console.log(this.state)
+//     this.state = {
+//       current_moment: check_current_moment,
+//       greeting_txt : greeting_txt,
+//       greeting_img : greeting_img,
+//       currentPage: "home",
+//       nextPage: "",
+//       homePage: false,
+//       ingredientsPage: false,
+//       recipePage: false,
+//     };
+//     console.log(this.state)
 
-    this.handleClick = this.handleClick.bind(this)
-    this.handlePageSwitching = this.handlePageSwitching.bind(this)
-  }
+//     this.handleClick = this.handleClick.bind(this)
+//     this.handlePageSwitching = this.handlePageSwitching.bind(this)
+//   }
 
-  componentDidMount(){
-    this.setState({homePage: true})
-  }
+//   componentDidMount(){
+//     this.setState({homePage: true})
+//   }
   
-  handleClick(event){
-    const e = event.target;
-    const {name, value} = e;
-    this.setState({[name] : value})
-  }
+//   handleClick(event){
+//     const e = event.target;
+//     const {name, value} = e;
+//     this.setState({[name] : value})
+//   }
 
-  handlePageSwitching(event) {
-    const [name, value] = event;
+//   handlePageSwitching(event) {
+//     const [name, value] = event;
     
-  }
+//   }
 
-  render(){
-    const currentPage = this.state.currentPage;
-    console.log(this.state.homePage)
-    // const pageContent = currentPage === "home" ? <Greetings data={this.state} size="full" /> : currentPage === "ingredients" ? "ingredients page" : null
+//   render(){
+//     const currentPage = this.state.currentPage;
+//     console.log(this.state.homePage)
+//     // const pageContent = currentPage === "home" ? <Greetings data={this.state} size="full" /> : currentPage === "ingredients" ? "ingredients page" : null
 
 
 
-    const transitionOptions = {
-      transitionName: "fade",
-      transitionEnterTimeout: 500,
-      transitionLeaveTimeout: 500
-    }
+//     const transitionOptions = {
+//       transitionName: "fade",
+//       transitionEnterTimeout: 500,
+//       transitionLeaveTimeout: 500
+//     }
 
-    let theChild = undefined;
-    if (this.state.currentPage === 'one') {
-        theChild = <Greetings data={this.state} />;
-    } else {
-        theChild = "123123";
-    } 
+//     let theChild = undefined;
+//     if (this.state.currentPage === 'one') {
+//         theChild = <Greetings data={this.state} />;
+//     } else {
+//         theChild = "123123";
+//     } 
 
-    return(
-      <div className="page_home">
-        <Layout>
-          <SEO title="Home" />
+//     return(
+//       <div className="page_home">
+//         <Layout>
+//           <SEO title="Home" />
 
-          <button name="currentPage" value="ingredients" onClick={this.handlePageSwitching}>change state</button>
-          {/* <Greetings data={this.state} size="full" /> */}
-          <Link to="/ingredients/" state={{type : `breakfast`}}>做早餐</Link>
-        </Layout>
-      </div>
-    )
-  }  
-}
+//           <button name="currentPage" value="ingredients" onClick={this.handlePageSwitching}>change state</button>
+//           {/* <Greetings data={this.state} size="full" /> */}
+//           <Link to="/ingredients/" state={{type : `breakfast`}}>做早餐</Link>
+//         </Layout>
+//       </div>
+//     )
+//   }  
+// }
 
 // const IndexPage = () => (
 //   <Layout>
